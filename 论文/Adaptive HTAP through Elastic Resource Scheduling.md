@@ -223,4 +223,24 @@ S2每次查询需要从实例2中获取自上次更新OLAP引擎实例以来**�
 
 ## OLAP性能
 
+纵坐标AP查询性能, 横坐标AP查询个数
+
 S2是最慢的, 因为它必须为每个query进行ETL
+
+<img src="https://gitee.com/yyjjtt/picture_bed/raw/master/img/image-20210321151703162.png" alt="image-20210321151703162" style="zoom:50%;" />
+
+在所有情况下，我们观察到自适应性提高了性能，但代价是一个ETL，一个查询付出了额外的延迟。这个ETL的时间取决于𝛼的值，我们目前设置为0.5。
+
+## OLTP性能
+
+纵坐标TP吞吐量, 横坐标AP查询个数
+
+<img src="https://gitee.com/yyjjtt/picture_bed/raw/master/img/image-20210321152051644.png" style="zoom:50%;" />
+
+由于OLAP除了OLAP本地扫描外，还有通过互连访问数据的混合扫描，因此OLTP本地DRAM的内存压力增加，导致吞吐量略有下降。
+
+在所有的自适应调度中，每次ETL之后，吞吐量都会增加。
+
+𝑆3 - 𝑁𝐼由于重新分配CPU核心到OLAP引擎，与孤立状态相比，吞吐量较低。
+
+最后，𝑆1由于OLTP和和OLAP在同一socket中的共同定位而产生差异。
