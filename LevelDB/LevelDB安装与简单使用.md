@@ -76,3 +76,25 @@ $ ./demo
 ```
 
 读取到的与(key=apple)对应的(value=A)
+
+# 问题解决
+
+## demo编译时出现snappy错误
+
+错误提示:
+
+![image-20210322163652744](https://gitee.com/yyjjtt/picture_bed/raw/master/img/image-20210322163652744.png)
+
+安装snappy
+
+```
+yum install snappy # centos
+apt install libsnappy-dev # debian/ubuntu
+```
+
+将命令改为:
+
+```
+g++ -o demo demo.cc -pthread -lleveldb -std=c++11 -lsnappy
+```
+
