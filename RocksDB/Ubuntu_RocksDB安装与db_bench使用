@@ -34,4 +34,4 @@ make -jNCPUS db_bench DEBUG_LEVEL=0
 
 # 参考文献
 
-https://github.com/facebook/rocksdb/blob/master/INSTALL.md
+[rocksdb/INSTALL.md at master · facebook/rocksdb](https://github.com/facebook/rocksdb/blob/master/INSTALL.md)
