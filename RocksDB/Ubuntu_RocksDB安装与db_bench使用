@@ -1,0 +1,37 @@
+# 目录
+
+[toc]
+
+# ubuntu安装rocksdb
+
+PS: 相比较centos需要各种手动装包以及各种问题, ubuntu只需要全程输入命令即可
+
+## 环境配置
+
+- Upgrade your gcc to version at least 4.8 to get C++11 support.
+- Install gflags. First, try: `sudo apt-get install libgflags-dev` If this doesn't work and you're using Ubuntu, here's a nice tutorial: (http://askubuntu.com/questions/312173/installing-gflags-12-04)
+- Install snappy. This is usually as easy as: `sudo apt-get install libsnappy-dev`.
+- Install zlib. Try: `sudo apt-get install zlib1g-dev`.
+- Install bzip2: `sudo apt-get install libbz2-dev`.
+- Install lz4: `sudo apt-get install liblz4-dev`.
+- Install zstandard: `sudo apt-get install libzstd-dev`.
+
+## 编译运行
+
+```
+make -jNCPUS db_bench DEBUG_LEVEL=0
+```
+
+测试db_bench
+
+```
+./db_bench --benchmarks="fillseq"
+```
+
+结果:
+
+![image-20210324201209442](https://gitee.com/yyjjtt/picture_bed/raw/master/img/image-20210324201209442.png)
+
+# 参考文献
+
+https://github.com/facebook/rocksdb/blob/master/INSTALL.md
